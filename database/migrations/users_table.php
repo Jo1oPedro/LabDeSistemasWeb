@@ -5,7 +5,8 @@ namespace Database\Migrations;
 use Illuminate\Database\Capsule\Manager as Capsule;
 use Illuminate\Database\Schema\Blueprint;
 
-class userstable {
+class userstable
+{
 
     public static function up()
     {
