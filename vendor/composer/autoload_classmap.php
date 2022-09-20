@@ -7,11 +7,13 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'App\\Controllers\\HomeController' => $baseDir . '/app/Controllers/HomeController.php',
+    'App\\Controllers\\LoginController' => $baseDir . '/app/Controllers/LoginController.php',
     'App\\Core\\App' => $baseDir . '/core/App.php',
     'App\\Core\\Database\\Connection' => $baseDir . '/core/database/Connection.php',
     'App\\Core\\Database\\QueryBuilder' => $baseDir . '/core/database/QueryBuilder.php',
     'App\\Core\\Request' => $baseDir . '/core/Request.php',
     'App\\Core\\Router' => $baseDir . '/core/Router.php',
+    'App\\Models\\User' => $baseDir . '/app/Models/User.php',
     'Attribute' => $vendorDir . '/symfony/polyfill-php80/Resources/stubs/Attribute.php',
     'Carbon\\AbstractTranslator' => $vendorDir . '/nesbot/carbon/src/Carbon/AbstractTranslator.php',
     'Carbon\\Carbon' => $vendorDir . '/nesbot/carbon/src/Carbon/Carbon.php',

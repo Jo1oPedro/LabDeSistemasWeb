@@ -11,6 +11,7 @@ use App\Core\Router;
 //-----------Rotas do Front-------------//
 
 $router->get('', 'HomeController@index');
+$router->get('login', 'LoginController@index');
 //$router->get('admin', 'LoginController@index');
 
 //$router->get('', 'ViewController@home');
