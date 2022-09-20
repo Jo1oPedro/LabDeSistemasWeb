@@ -6,6 +6,7 @@
         "files": ["core/helpers.php"]
     },
     "require": {
-        "phpmailer/phpmailer": "^6.6"
+        "phpmailer/phpmailer": "^6.6",
+        "illuminate/database": "^9.30"
     }
 }
