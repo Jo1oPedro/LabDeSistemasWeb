@@ -3,9 +3,8 @@
 | **Sumário** |
 |-------------|
 | [Objetivos do repositorio](#objetivos-do-repositorio) |
+| [Como executar o projeto inicial](#como-executar-o-projeto-inicial) |
 | [Comandos atualmente presentes nesse repositorio](#comandos-atualmente-presentes-nesse-repositorio) |
-| [Como executar o projeto inicial](#como-executar-o-projeto-inicial) ||
-
 
 ## Objetivos do repositorio
 Objetivos do repositorio: Inicialmente o repositorio tinha como objetivo ser um trabalho a ser entregue para a disciplina de Laboratorio de sistemas web da UFJF, porém percebi que após introduzir o eloquent e programar alguns comandos dentro do sistema ele poderia ser utilizado também como base para o backend do trainee da CodeJr;
