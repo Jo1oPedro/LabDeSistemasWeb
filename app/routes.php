@@ -10,13 +10,20 @@ use App\Core\Router;
 
 //-----------Rotas do Front-------------//
 
+//Pagina inicial
 $router->get('', 'HomeController@index');
-$router->get('login', 'LoginController@index');
-$router->post('', 'HomeController@index');
+//$router->post('', 'HomeController@index');
 
 //Registro de usuario
 $router->get('register', 'RegisterController@registerForm');
 $router->post('register', "RegisterController@registerAction");
 
 //Login
+$router->get('login', 'LoginController@index');
 $router->post('login', 'LoginController@logIn');
+
+//Logout
+$router->post('logout', 'LoginController@logout');
+
+//Criar um novo post
+$router->post('post', "PostController@store");
