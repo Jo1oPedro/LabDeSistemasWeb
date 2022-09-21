@@ -10,9 +10,12 @@ class LoginController extends Controller
     public function __construct()
     {
         parent::__construct();
+        $_SESSION["errors"] = "";
         if(isset($_SESSION['logado'])) {
-            return redirect('');
-            exit();
+            if($_SERVER["REQUEST_URI"] != "/logout") {
+                return redirect('');
+                exit();
+            }
         }
     }
 
@@ -29,16 +32,25 @@ class LoginController extends Controller
         $password = $_POST["password"];
         filter_input(INPUT_POST,  $password, FILTER_SANITIZE_STRIPPED);
         $user = User::where("email", $email)->first();
-        if(password_verify($password, $user->password)) {
-            echo "dale";
-        } else {
-            echo "dele";
+        if(!$user) {
+            $_SESSION["errors"] = ["email" => "E-mail invalido"];
+            return view('guests/login_page');
         }
+        if(password_verify($password, $user->password)) {
+            $_SESSION["logado"] = $user;
+            unset($_SESSION["errors"]);
+            return redirect("");
+            exit();
+        }
+        $_SESSION["errors"] = ["loginInvalido" => "LogIn invalido"];
+        return view('guests/login_page');
     }
 
-    public function logou()
+    public function logout()
     {
-
+        unset($_SESSION["logado"]);
+        return redirect('login');
+        exit();
     }
 
 }

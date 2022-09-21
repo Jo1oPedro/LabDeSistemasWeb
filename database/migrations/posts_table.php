@@ -11,6 +11,8 @@ class poststable
     {
         Capsule::schema()->create("posts", function (Blueprint $table) {
             $table->increments("id");
+            $table->string("body");
+            $table->foreignId("user_id")->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }
