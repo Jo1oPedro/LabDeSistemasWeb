@@ -5,6 +5,7 @@
 | [Objetivos do repositorio](#objetivos-do-repositorio) |
 | [Como executar o projeto inicial](#como-executar-o-projeto-inicial) |
 | [Comandos atualmente presentes nesse repositorio](#comandos-atualmente-presentes-nesse-repositorio) |
+| [Classe abstrata Controller](#classe-abstrata-controller) |
 
 ## Objetivos do repositorio
 Objetivos do repositorio: Inicialmente o repositorio tinha como objetivo ser um trabalho a ser entregue para a disciplina de Laboratorio de sistemas web da UFJF, porém percebi que após introduzir o eloquent e programar alguns comandos dentro do sistema ele poderia ser utilizado também como base para o backend do trainee da CodeJr;
@@ -28,6 +29,6 @@ Objetivos do repositorio: Inicialmente o repositorio tinha como objetivo ser um 
 
 4. `php bootstrap make_controller`: Comando responsavel por criar um controller. Seu parametro é o `nome do controller`, a padronização para nome de controllers é a mesma padronização para nome de classes, então como exemplo, um controller de usuario tera o nome de `UsuarioController`. O controller serve como intermediario entre o usuario e o banco de dados, podendo chamar metodos que irão tratar dados ou redirecionando o usuario.
 
-## Class abstrata Controller 
+## Classe abstrata Controller 
   Essa class extendida por todos os controllers tem como objetivo `iniciar o eloquent e a session do php em todos os controller.
 
