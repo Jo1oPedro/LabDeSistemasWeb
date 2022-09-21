@@ -1,5 +1,7 @@
 <?php
 
+// rodar comando app/bootstrap/create_migration.php nome_da_migration --m para criar com a model junto
+
 if(count($argv) == 2 || count($argv) == 3) {
     $migration_name = $argv[1];
     $migration_path = __DIR__."\..\database\migrations\\" . $migration_name . "_table.php";
