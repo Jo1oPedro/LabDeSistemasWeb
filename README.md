@@ -16,7 +16,7 @@ Objetivos do repositorio: Inicialmente o repositorio tinha como objetivo ser um 
 3. Atualize as dependências: `composer update`;
 4. Rode o comando composer `dump-autoload`;
 5. Crie um banco de dados `sql` com o nome de `sua preferencia e coloque o nome dele dentro do arquivo start_application que está dentro do diretorio bootstrap`;
-6. Rode as migrations com o comando php bootstra run_all_migrations.php;
+6. Rode as migrations com o comando `php bootstra run_all_migrations.php`;
 7. Rode o comando: `php -S localhost:8080' ou sua porta de preferencia para iniciar o servidor;
 
 ## Comandos atualmente presentes nesse repositorio
