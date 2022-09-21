@@ -28,3 +28,6 @@ Objetivos do repositorio: Inicialmente o repositorio tinha como objetivo ser um 
 
 4. `php bootstrap make_controller`: Comando responsavel por criar um controller. Seu parametro é o `nome do controller`, a padronização para nome de controllers é a mesma padronização para nome de classes, então como exemplo, um controller de usuario tera o nome de `UsuarioController`. O controller serve como intermediario entre o usuario e o banco de dados, podendo chamar metodos que irão tratar dados ou redirecionando o usuario.
 
+## Class abstrata Controller 
+  Essa class extendida por todos os controllers tem como objetivo `iniciar o eloquent e a session do php em todos os controller.
+
