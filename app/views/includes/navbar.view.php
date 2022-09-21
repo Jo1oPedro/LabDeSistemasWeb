@@ -26,6 +26,11 @@
         <li class="nav-item">
           <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
         </li>
+        <li class="nav-item ">
+            <form action="logout" method="post" class="nav-link active" aria-current="page">
+                <button type="submit" style="border: none;background-color:#F8F9FA">Deslogar</button>
+            </form>
+        </li>
       </ul>
       <form class="d-flex">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">

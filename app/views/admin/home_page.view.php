@@ -8,7 +8,6 @@
 <body>
     
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
-
 <div id="main-content" class="blog-page">
     <div class="container">
         <?php include 'app/views/includes/navbar.view.php' ?>
@@ -19,11 +18,16 @@
                             <div class="img-post">
                                 <img class="d-block img-fluid" src="../../../public/assets/gifs/elephpant-running-78x48.gif" alt="First slide">
                             </div>
-                            <h3><a href="blog-details.html">Coloca seu texto aqui</a></h3>
-                            <p>PHP-PHP-PHP-PHP-PHP-PHP-PHP-PHP-PHP-PHP-PHP-PHP-PHP-PHP-PHP-PHP-
-                                PHP-PHP-PHP-PHP-PHP-PHP-PHP-PHP-PHP-PHP-PHP-PHP-PHP-PHP-PHP-PHP-PHP-
-                                PHP-PHP-PHP-PHP-PHP-PHP-PHP-PHP-PHP-PHP-PHP-PHP-PHP-PHP-PHP-PHP-PHP
-                            </p>
+                            <!--<h3><a href="blog-details.html">Coloca seu texto aqui</a></h3>-->
+                            <?= $_SESSION["errors"]["error"] ?? ""; ?>
+                            <form action="post" method="post">
+                                <div class="form-group">
+                                    <label for="body">Digite o problema</label>
+                                    <textarea class="form-control" name="body" id="body" rows="7"></textarea>
+                                </div>
+                                <input type="hidden" name="user_id" value="<?= ($_SESSION["logado"]["id"]); ?>">
+                                <input type="submit" value="Enviar">
+                            </form>
                         </div>                        
                     </div>
                     <div class="card">
@@ -68,7 +72,7 @@
                                 </ul>                                        
                             </div>
                         </div>
-                        <div class="card">
+                        <!--<div class="card">
                             <div class="header">
                                 <h2>Leave a reply <small>Your email address will not be published. Required fields are marked*</small></h2>
                             </div>
@@ -94,7 +98,7 @@
                                     </form>
                                 </div>
                             </div>
-                        </div>
+                        </div>-->
                 </div>
                 <div class="col-lg-4 col-md-12 right-box">
                     <div class="card">

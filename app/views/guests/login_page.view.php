@@ -21,9 +21,11 @@
                                     <h4 class="mt-1 mb-5 pb-1">Laboratório de Sistemas Web</h4>
                                 </div>
 
+                                <?= $_SESSION["errors"]["loginInvalido"] ?? "" ?>
                                 <form action="/login" method="post">
                                     <p>Logue na sua conta</p>
 
+                                    <?= $_SESSION["errors"]["email"] ?? "" ?>
                                     <div class="form-outline mb-4">
                                         <input type="email" name="email" id="email" class="form-control"
                                                placeholder="E-mail" required />

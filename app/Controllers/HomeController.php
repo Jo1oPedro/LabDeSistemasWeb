@@ -18,9 +18,6 @@ class HomeController extends Controller{
 
     public function index() 
     {
-        /*
-        $user->save();*/
-
         return view('admin/home_page');
     }
 
