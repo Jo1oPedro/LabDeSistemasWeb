@@ -23,8 +23,22 @@ class PostController extends Controller
                 "body" => FILTER_SANITIZE_STRIPPED,
                 "user_id" => FILTER_SANITIZE_NUMBER_INT,
             ];
+            $file = $_FILES['file'];
             $postData = filter_input_array(INPUT_POST, $filterForm);
             if(!in_array(false, $postData)) {
+                $allowedTypes = [
+                    "image/jpg",
+                    "image/jpeg",
+                    "image/png",
+                ];
+                if(!in_array($file['type'], $allowedTypes)) {
+                    $_SESSION["errors"] = ["file" => "Tipo de arquivo invalido"];
+                    return redirect('');
+                    exit();
+                }
+                $postData["file"] = time() . mb_strstr($file['name'], '.');
+                var_dump($postData["file"]);
+                die();
                 Post::create($postData);
                 return redirect('');
                 exit();
