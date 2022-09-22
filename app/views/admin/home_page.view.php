@@ -20,10 +20,14 @@
                             </div>
                             <!--<h3><a href="blog-details.html">Coloca seu texto aqui</a></h3>-->
                             <?= $_SESSION["errors"]["error"] ?? ""; ?>
-                            <form action="post" method="post">
+                            <form action="post" method="post" enctype="multipart/form-data">
                                 <div class="form-group">
                                     <label for="body">Digite o problema</label>
                                     <textarea class="form-control" name="body" id="body" rows="7"></textarea>
+                                </div>
+                                <div class="form-group" style="margin-bottom: 10px">
+                                    <label for="file">Imagem</label>
+                                    <input type="file" class="form-control" name="file" id="file">
                                 </div>
                                 <input type="hidden" name="user_id" value="<?= ($_SESSION["logado"]["id"]); ?>">
                                 <input type="submit" value="Enviar">
@@ -32,7 +36,7 @@
                     </div>
                     <div class="card">
                             <div class="header">
-                                <h2>Comments 3</h2>
+                                <h2>Posts</h2>
                             </div>
                             <div class="body">
                                 <ul class="comment-reply list-unstyled">
@@ -130,20 +134,15 @@
                         <div class="body widget popular-post">
                             <div class="row">
                                 <div class="col-lg-12">
-                                    <div class="single_post">
-                                        <p class="m-b-0">Apple Introduces Search Ads Basic</p>
-                                        <span>jun 22, 2018</span>
-                                        <div class="img-post">
-                                            <img src="https://via.placeholder.com/280x280/87CEFA/000000" alt="Awesome Image">                                        
-                                        </div>                                            
-                                    </div>
-                                    <div class="single_post">
-                                        <p class="m-b-0">new rules, more cars, more races</p>
-                                        <span>jun 8, 2018</span>
-                                        <div class="img-post">
-                                            <img src="https://via.placeholder.com/280x280/87CEFA/000000" alt="Awesome Image">                                            
+                                    <?php foreach ($posts_mais_recentes as $post) : ?>
+                                        <div class="single_post">
+                                            <p class="m-b-0"> <?= substr($post->body, 0, 20); ?> </p>
+                                            <span>jun <?= $post->created_at->day . ", " . $post->created_at->year; ?></span>
+                                            <div class="img-post">
+                                                <img src="https://via.placeholder.com/280x280/87CEFA/000000" alt="Awesome Image">
+                                            </div>
                                         </div>
-                                    </div>
+                                    <?php endforeach; ?>
                                 </div>
                             </div>
                         </div>

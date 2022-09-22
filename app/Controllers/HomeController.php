@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 use App\Core\App;
+use App\Models\Post;
 use App\Models\User;
 use Exception;
 
@@ -18,7 +19,9 @@ class HomeController extends Controller{
 
     public function index() 
     {
-        return view('admin/home_page');
+        $posts_mais_recentes = Post::all()->take(3);
+        $posts = Post::inRandomOrder()->whereNotIn("id", array_column($posts_mais_recentes->toArray(), "id"))->get();
+        return view('admin/home_page', compact('posts_mais_recentes', "posts"));
     }
 
 }
