@@ -148,6 +148,7 @@ class ComposerStaticInit77d18dcc81140e6fe6e1cf916f541701
     );
 
     public static $classMap = array (
+        'App\\Controllers\\BannerController' => __DIR__ . '/../..' . '/app/Controllers/BannerController.php',
         'App\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Controllers/Controller.php',
         'App\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Controllers/HomeController.php',
         'App\\Controllers\\LoginController' => __DIR__ . '/../..' . '/app/Controllers/LoginController.php',
@@ -159,6 +160,7 @@ class ComposerStaticInit77d18dcc81140e6fe6e1cf916f541701
         'App\\Core\\Database\\QueryBuilder' => __DIR__ . '/../..' . '/core/database/QueryBuilder.php',
         'App\\Core\\Request' => __DIR__ . '/../..' . '/core/Request.php',
         'App\\Core\\Router' => __DIR__ . '/../..' . '/core/Router.php',
+        'App\\Helpers\\ImageHelper' => __DIR__ . '/../..' . '/app/Helpers/ImageHelper.php',
         'App\\Models\\Post' => __DIR__ . '/../..' . '/app/Models/Post.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
         'App\\Models\\table_name_uc_first' => __DIR__ . '/../..' . '/app/Models/default_model/DefaultModel.php',
