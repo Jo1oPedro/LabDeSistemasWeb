@@ -3,12 +3,16 @@
 namespace App\Controllers;
 
 use App\Models\Post;
+use App\Helpers\ImageHelper;
 
 class PostController extends Controller
 {
 
+    private $imageHelper;
+
     public function __construct()
     {
+        $this->imageHelper = new ImageHelper();
         parent::__construct();
         if(!isset($_SESSION['logado'])) {
             return redirect('login');
@@ -36,9 +40,8 @@ class PostController extends Controller
                     return redirect('');
                     exit();
                 }
-                $postData["file"] = time() . mb_strstr($file['name'], '.');
-                var_dump($postData["file"]);
-                die();
+                //$postData["file"] = time() . mb_strstr($file['name'], '.');
+                $this->imageHelper->resize($_FILES["file"], $postData, 500,500);
                 Post::create($postData);
                 return redirect('');
                 exit();
