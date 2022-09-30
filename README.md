@@ -17,7 +17,7 @@ Objetivos do repositorio: Inicialmente o repositorio tinha como objetivo ser um 
 3. Atualize as dependências: `composer update`;
 4. Rode o comando composer `dump-autoload`;
 5. Crie um banco de dados `sql` com o nome de `sua preferencia e coloque o nome dele dentro do arquivo start_application que está dentro do diretorio bootstrap`;
-6. Rode as migrations com o comando `php bootstra run_all_migrations.php`;
+6. Rode as migrations com o comando `php bootstrap run_all_migrations.php`;
 7. Rode o comando: `php -S localhost:8080' ou sua porta de preferencia para iniciar o servidor;
 
 ## Comandos atualmente presentes nesse repositorio
@@ -27,7 +27,7 @@ Objetivos do repositorio: Inicialmente o repositorio tinha como objetivo ser um 
 
 3. `php bootstrap down_all_migrations`: Comando responsavel por desfazer todas as migrations dentro da pasta database\migrations. Esse comando vai fazer com que suas migrations passem a não mais existir no banco de dados.
 
-4. `php bootstrap make_controller`: Comando responsavel por criar um controller. Seu parametro é o `nome do controller`, a padronização para nome de controllers é a mesma padronização para nome de classes, então como exemplo, um controller de usuario tera o nome de `UsuarioController`. O controller serve como intermediario entre o usuario e o banco de dados, podendo chamar metodos que irão tratar dados ou redirecionando o usuario.
+4. `php bootstrap make_controller`: Comando responsavel por criar um controller. Seu parametro é o `nome do controller`, a padronização para nome de controllers é a mesma padronização para nome de classes, então como exemplo, um controller de usuario tera o nome de `UsuarioController`, `2°: --resource`, responsavel por criar um controller com todos os metodos basícos de um controller. O controller serve como intermediario entre o usuario e o banco de dados, podendo chamar metodos que irão tratar dados ou redirecionando o usuario.
 
 ## Classe abstrata Controller 
   Essa class extendida por todos os controllers tem como objetivo `iniciar o eloquent e a session` do php em todos os controller.
