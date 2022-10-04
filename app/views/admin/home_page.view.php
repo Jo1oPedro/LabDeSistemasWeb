@@ -35,44 +35,32 @@
                         </div>                        
                     </div>
                     <div class="card">
+                            <?php echo($_SESSION["deleted"] ?? ""); unset($_SESSION["deleted"]);  ?>
                             <div class="header">
                                 <h2>Posts</h2>
                             </div>
                             <div class="body">
                                 <ul class="comment-reply list-unstyled">
-                                    <li class="row clearfix">
-                                        <div class="icon-box col-md-2 col-4"><img class="img-fluid img-thumbnail" src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Awesome Image"></div>
-                                        <div class="text-box col-md-10 col-8 p-l-0 p-r0">
-                                            <h5 class="m-b-0">Gigi Hadid </h5>
-                                            <p>Why are there so many tutorials on how to decouple WordPress? how fast and easy it is to get it running (and keep it running!) and its massive ecosystem. </p>
-                                            <ul class="list-inline">
-                                                <li><a href="javascript:void(0);">Mar 09 2018</a></li>
-                                                <li><a href="javascript:void(0);">Reply</a></li>
-                                            </ul>
-                                        </div>
-                                    </li>
-                                    <li class="row clearfix">
-                                        <div class="icon-box col-md-2 col-4"><img class="img-fluid img-thumbnail" src="https://bootdey.com/img/Content/avatar/avatar3.png" alt="Awesome Image"></div>
-                                        <div class="text-box col-md-10 col-8 p-l-0 p-r0">
-                                            <h5 class="m-b-0">Christian Louboutin</h5>
-                                            <p>Great tutorial but few issues with it? If i try open post i get following errors. Please can you help me?</p>
-                                            <ul class="list-inline">
-                                                <li><a href="javascript:void(0);">Mar 12 2018</a></li>
-                                                <li><a href="javascript:void(0);">Reply</a></li>
-                                            </ul>
-                                        </div>
-                                    </li>
-                                    <li class="row clearfix">
-                                        <div class="icon-box col-md-2 col-4"><img class="img-fluid img-thumbnail" src="https://bootdey.com/img/Content/avatar/avatar4.png" alt="Awesome Image"></div>
-                                        <div class="text-box col-md-10 col-8 p-l-0 p-r0">
-                                            <h5 class="m-b-0">Kendall Jenner</h5>
-                                            <p>Very nice and informative article. In all the years I've done small and side-projects as a freelancer, I've ran into a few problems here and there.</p>
-                                            <ul class="list-inline">
-                                                <li><a href="javascript:void(0);">Mar 20 2018</a></li>
-                                                <li><a href="javascript:void(0);">Reply</a></li>
-                                            </ul>
-                                        </div>
-                                    </li>
+                                    <?php foreach($posts as $post) : ?>
+                                        <li class="row clearfix">
+                                            <div class="icon-box col-md-2 col-4"><img class="img-fluid img-thumbnail" src="<?= $post->image_path ;?>" alt="Awesome Image"></div>
+                                            <div class="text-box col-md-10 col-8 p-l-0 p-r0">
+                                                <h5 class="m-b-0"><?= $post->user->name ;?> </h5>
+                                                <p> <?= $post->body ;?>  </p>
+                                                <ul class="list-inline">
+                                                    <li><a href="javascript:void(0);" style="text-decoration: none"><?= date("d/m/Y", strtotime($post->created_at)) ;?></a></li>
+                                                    <?php if($_SESSION['logado']['admin']) : ?>
+                                                        <li>
+                                                            <form method="post" action="/delete/post">
+                                                                <input type="hidden" name="post_id" value="<?= $post->id; ?>">
+                                                                <button style="border: none; background-color: white;" type="submit">deletar</button>
+                                                            </form>
+                                                        </li>
+                                                    <?php endif; ?>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                    <?php endforeach; ?>
                                 </ul>                                        
                             </div>
                         </div>
@@ -117,14 +105,18 @@
                     </div>
                     <div class="card">
                         <div class="header">
-                            <h2>Categories Clouds</h2>
+                            <h2>Propagandas</h2>
                         </div>
-                        <div class="body widget">
-                            <ul class="list-unstyled categories-clouds m-b-0">
-                                <li><a href="javascript:void(0);">Bugs</a></li>
-                                <li><a href="javascript:void(0);">Dúvidas</a></li>
-                                <li><a href="javascript:void(0);">Contato</a></li>
-                            </ul>
+                        <div class="body widget popular-post">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="single_post">
+                                        <div class="img-post">
+                                            <img src="<?= $banner->image_path; ?>" alt="Awesome Image">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="card">
@@ -139,7 +131,7 @@
                                             <p class="m-b-0"> <?= substr($post->body, 0, 20); ?> </p>
                                             <span>jun <?= $post->created_at->day . ", " . $post->created_at->year; ?></span>
                                             <div class="img-post">
-                                                <img src="https://via.placeholder.com/280x280/87CEFA/000000" alt="Awesome Image">
+                                                <img src="<?= $post->image_path; ?>" alt="Awesome Image">
                                             </div>
                                         </div>
                                     <?php endforeach; ?>

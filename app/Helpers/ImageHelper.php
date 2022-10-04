@@ -7,7 +7,7 @@ use App\Controllers\Controller;
 class ImageHelper
 {
 
-    public static function resize(mixed $file, array &$data,  int $maxWidth, int $maxHeight)
+    public static function resize(mixed $file,  int $maxWidth, int $maxHeight): string
     {
         var_dump($file);
         list($widthOrig, $heightOrig) = getimagesize($file['tmp_name']);
@@ -40,9 +40,10 @@ class ImageHelper
             $newWidth, $newHeight, $widthOrig, $heightOrig,
         );
 
-        //$photoName = md5(time().rand(0,9999)).'.jpg';
-        $postData["file"] = md5(time().rand(0,9999)).'.jpg';
-        imagejpeg($finalImage, 'public/img/users/'.$postData["file"]);
+        $file_path = md5(time().rand(0,9999)).'.jpg';
+        imagejpeg($finalImage, 'public/img/users/'. $file_path);
+
+        return "public/img/users/" . $file_path;
     }
 
 }

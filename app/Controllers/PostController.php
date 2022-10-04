@@ -41,14 +41,24 @@ class PostController extends Controller
                     exit();
                 }
                 //$postData["file"] = time() . mb_strstr($file['name'], '.');
-                $this->imageHelper->resize($_FILES["file"], $postData, 500,500);
-                Post::create($postData);
+                $postData["image_path"] = $this->imageHelper->resize($_FILES["file"], 500, 500);
+                $post = Post::create($postData);
                 return redirect('');
                 exit();
+
             }
             $_SESSION["errors"] = ["error" => "Erro ao criar um novo post"];
         }
+    }
 
+    public function delete()
+    {
+        $post_id = filter_input(INPUT_POST, "post_id", FILTER_VALIDATE_INT);
+        if($_SESSION["logado"]["admin"]) {
+            Post::destroy($post_id);
+            $_SESSION["deleted"] = "Sucesso ao deletar o post";
+            return redirect("");
+        }
     }
 
 }

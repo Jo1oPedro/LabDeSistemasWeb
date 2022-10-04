@@ -40,7 +40,7 @@ if(count($argv) == 3 || count($argv) == 4) {
                 echo "A model $model_name já existe" . PHP_EOL;
             }
         } else {
-            echo "Comando make:migration $argv[3] não existe, comédia." . PHP_EOL;
+            echo "Model não foi criada junto da migration" . PHP_EOL;
         }
     } else {
         echo "A migration já $migration_name já foi criada";
