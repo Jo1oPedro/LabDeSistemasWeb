@@ -21,7 +21,7 @@ class HomeController extends Controller{
     public function index() 
     {
         $posts_mais_recentes = Post::all()->take(3);
-        $posts = Post::inRandomOrder()->whereNotIn("id", array_column($posts_mais_recentes->toArray(), "id"))->get();
+        $posts = Post::inRandomOrder()->whereNotIn("id", array_column($posts_mais_recentes->toArray(), "id"))->paginate(1);
         $banner = Banner::inRandomOrder()->first();
         return view('admin/home_page', compact('posts_mais_recentes', "posts", "banner"));
     }
