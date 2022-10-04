@@ -63,6 +63,8 @@
                                     <?php endforeach; ?>
                                 </ul>                                        
                             </div>
+                            <a href="?page=2">dale</a>
+                            <?php print_r($posts->nextPageUrl()); ?>
                         </div>
                         <!--<div class="card">
                             <div class="header">

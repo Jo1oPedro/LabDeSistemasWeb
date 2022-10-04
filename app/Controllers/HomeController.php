@@ -6,6 +6,7 @@ use App\Models\Banner;
 use App\Models\Post;
 use App\Models\User;
 use Exception;
+use Illuminate\Database\Capsule\Manager as DB;
 
 class HomeController extends Controller{
 
@@ -21,7 +22,8 @@ class HomeController extends Controller{
     public function index() 
     {
         $posts_mais_recentes = Post::all()->take(3);
-        $posts = Post::inRandomOrder()->whereNotIn("id", array_column($posts_mais_recentes->toArray(), "id"))->paginate(1);
+        //$posts = Post::inRandomOrder()->whereNotIn("id", array_column($posts_mais_recentes->toArray(), "id"))->paginate(2);
+        $posts = DB::table('posts')->paginate(1);//Post::all()->paginate(1);
         $banner = Banner::inRandomOrder()->first();
         return view('admin/home_page', compact('posts_mais_recentes', "posts", "banner"));
     }
