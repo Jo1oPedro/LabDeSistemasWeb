@@ -13,6 +13,7 @@ use App\Core\Router;
 
 //Pagina inicial
 $router->get('', 'HomeController@index');
+$router->get('home', 'HomeController@index');
 //$router->post('', 'HomeController@index');
 
 //Registro de usuario

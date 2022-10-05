@@ -63,8 +63,9 @@
                                     <?php endforeach; ?>
                                 </ul>                                        
                             </div>
-                            <a href="?page=2">dale</a>
-                            <?php print_r($posts->nextPageUrl()); ?>
+                            <?php foreach($paginate->getUrlRange(1, $paginate->lastPage()) as $key => $pagination) : ?>
+                                <a href="/home<?= str_replace('/','',$pagination); ?>"><?= $key; ?></a>
+                            <?php endforeach; ?>
                         </div>
                         <!--<div class="card">
                             <div class="header">

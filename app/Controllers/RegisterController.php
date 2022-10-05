@@ -45,7 +45,7 @@ class RegisterController extends Controller
         unset($_SESSION["error"]);
         $_SESSION["logado"] = $user->getAttributes();
         var_dump($_SESSION);
-        return redirect("");
+        return redirect("home");
     }
 
 }

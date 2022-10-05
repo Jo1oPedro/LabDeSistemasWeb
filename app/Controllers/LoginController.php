@@ -13,7 +13,7 @@ class LoginController extends Controller
         $_SESSION["errors"] = "";
         if(isset($_SESSION['logado'])) {
             if($_SERVER["REQUEST_URI"] != "/logout") {
-                return redirect('');
+                return redirect('home');
                 exit();
             }
         }
@@ -39,7 +39,7 @@ class LoginController extends Controller
         if(password_verify($password, $user->password)) {
             $_SESSION["logado"] = $user;
             unset($_SESSION["errors"]);
-            return redirect("");
+            return redirect("home");
             exit();
         }
         $_SESSION["errors"] = ["loginInvalido" => "LogIn invalido"];

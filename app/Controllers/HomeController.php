@@ -8,7 +8,8 @@ use App\Models\User;
 use Exception;
 use Illuminate\Database\Capsule\Manager as DB;
 
-class HomeController extends Controller{
+class HomeController extends Controller
+{
 
     public function __construct()
     {
@@ -23,9 +24,12 @@ class HomeController extends Controller{
     {
         $posts_mais_recentes = Post::all()->take(3);
         //$posts = Post::inRandomOrder()->whereNotIn("id", array_column($posts_mais_recentes->toArray(), "id"))->paginate(2);
-        $posts = DB::table('posts')->paginate(1);//Post::all()->paginate(1);
+        //$posts = DB::table('posts')->where('id', array_column(Post::all()->toArray(), "id"))->paginate(1);//Post::all()->paginate(1);
+        $numberToPaginate = 2;
+        $paginate = Post::paginate($numberToPaginate);
+        $posts = Post::skip(isset($_GET['page']) ? $numberToPaginate*($_GET['page']-1) : 0)->take($numberToPaginate)->get();
         $banner = Banner::inRandomOrder()->first();
-        return view('admin/home_page', compact('posts_mais_recentes', "posts", "banner"));
+        return view('admin/home_page', compact('posts_mais_recentes', "posts", "banner", "paginate"));
     }
 
 }

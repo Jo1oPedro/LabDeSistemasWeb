@@ -37,13 +37,13 @@ class PostController extends Controller
                 ];
                 if(!in_array($file['type'], $allowedTypes)) {
                     $_SESSION["errors"] = ["file" => "Tipo de arquivo invalido"];
-                    return redirect('');
+                    return redirect('home');
                     exit();
                 }
                 //$postData["file"] = time() . mb_strstr($file['name'], '.');
                 $postData["image_path"] = $this->imageHelper->resize($_FILES["file"], 500, 500);
                 $post = Post::create($postData);
-                return redirect('');
+                return redirect('home');
                 exit();
 
             }
@@ -57,7 +57,7 @@ class PostController extends Controller
         if($_SESSION["logado"]["admin"]) {
             Post::destroy($post_id);
             $_SESSION["deleted"] = "Sucesso ao deletar o post";
-            return redirect("");
+            return redirect("home");
         }
     }
 
