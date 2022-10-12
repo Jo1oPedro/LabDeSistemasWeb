@@ -43,13 +43,15 @@
                                 <ul class="comment-reply list-unstyled">
                                     <?php foreach($posts as $post) : ?>
                                         <li class="row clearfix">
-                                            <div class="icon-box col-md-2 col-4"><img class="img-fluid img-thumbnail" src="<?= $post->image_path ;?>" alt="Awesome Image"></div>
+                                            <a href="/post?post_id=<?= $post->id; ?>">
+                                                <div class="icon-box col-md-2 col-4"><img class="img-fluid img-thumbnail" src="<?= $post->image_path ;?>" alt="Awesome Image"></div>
+                                            </a>
                                             <div class="text-box col-md-10 col-8 p-l-0 p-r0">
                                                 <h5 class="m-b-0"><?= $post->user->name ;?> </h5>
                                                 <p> <?= $post->body ;?>  </p>
                                                 <ul class="list-inline">
                                                     <li><a href="javascript:void(0);" style="text-decoration: none"><?= date("d/m/Y", strtotime($post->created_at)) ;?></a></li>
-                                                    <?php if($_SESSION['logado']['admin']) : ?>
+                                                    <?php if($_SESSION['logado']['admin'] ?? false) : ?>
                                                         <li>
                                                             <form method="post" action="/delete/post">
                                                                 <input type="hidden" name="post_id" value="<?= $post->id; ?>">
@@ -63,9 +65,11 @@
                                     <?php endforeach; ?>
                                 </ul>                                        
                             </div>
-                            <?php foreach($paginate->getUrlRange(1, $paginate->lastPage()) as $key => $pagination) : ?>
-                                <a href="/home<?= str_replace('/','',$pagination); ?>"><?= $key; ?></a>
-                            <?php endforeach; ?>
+                            <?php if(false) : ?>
+                                <?php foreach($paginate->getUrlRange(1, $paginate->lastPage()) as $key => $pagination) : ?>
+                                    <a href="/home<?= str_replace('/','',$pagination); ?>"><?= $key; ?></a>
+                                <?php endforeach; ?>
+                            <?php endif; ?>
                         </div>
                         <!--<div class="card">
                             <div class="header">
@@ -130,13 +134,15 @@
                             <div class="row">
                                 <div class="col-lg-12">
                                     <?php foreach ($posts_mais_recentes as $post) : ?>
-                                        <div class="single_post">
-                                            <p class="m-b-0"> <?= substr($post->body, 0, 20); ?> </p>
-                                            <span>jun <?= $post->created_at->day . ", " . $post->created_at->year; ?></span>
-                                            <div class="img-post">
-                                                <img src="<?= $post->image_path; ?>" alt="Awesome Image">
+                                        <a href="/post?post_id=<?= $post->id; ?>">
+                                            <div class="single_post">
+                                                <p class="m-b-0"> <?= substr($post->body, 0, 20); ?> </p>
+                                                <span>jun <?= $post->created_at->day . ", " . $post->created_at->year; ?></span>
+                                                <div class="img-post">
+                                                    <img src="<?= $post->image_path; ?>" alt="Awesome Image">
+                                                </div>
                                             </div>
-                                        </div>
+                                        </a>
                                     <?php endforeach; ?>
                                 </div>
                             </div>
