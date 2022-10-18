@@ -24,10 +24,14 @@ class HomeController extends Controller
     {
         $posts_mais_recentes = Post::all()->take(-3);
         $posts = Post::inRandomOrder()->whereNotIn("id", array_column($posts_mais_recentes->toArray(), "id"))->get();
+        
         //$posts = DB::table('posts')->where('id', array_column(Post::all()->toArray(), "id"))->paginate(1);//Post::all()->paginate(1);
-        //$numberToPaginate = 2;
-        //$paginate = Post::paginate($numberToPaginate);
-        //$posts = Post::skip(isset($_GET['page']) ? $numberToPaginate*($_GET['page']-1) : 0)->take($numberToPaginate)->get();
+        
+        
+        /*$numberToPaginate = 2;
+        $paginate = Post::paginate($numberToPaginate);
+        $posts = Post::skip(isset($_GET['page']) ? $numberToPaginate*($_GET['page']-1) : 0)->take($numberToPaginate)->get();*/
+        
         $banner = Banner::inRandomOrder()->first();
         return view('admin/home_page', compact('posts_mais_recentes', "posts", "banner"));
     }

@@ -1,16 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <?php include 'app/views/includes/header.view.php' ?>
+    <?php include_once 'app/views/includes/header.view.php' ?>
     <link rel="stylesheet" href="../../../public/css/home_page.css">
     <title>Document</title>
 </head>
 <body>
     
-<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
 <div id="main-content" class="blog-page">
     <div class="container">
-        <?php include 'app/views/includes/navbar.view.php' ?>
+        <?php include_once 'app/views/includes/navbar.view.php' ?>
             <div class="row clearfix">
                 <div class="col-lg-8 col-md-12 left-box">
                     <div class="card single_post">
@@ -114,17 +113,19 @@
                         <div class="header">
                             <h2>Propagandas</h2>
                         </div>
-                        <div class="body widget popular-post">
-                            <div class="row">
-                                <div class="col-lg-12">
-                                    <div class="single_post">
-                                        <div class="img-post">
-                                            <img src="<?= $banner->image_path; ?>" alt="Awesome Image">
+                        <?php if($banner) : ?>
+                            <div class="body widget popular-post">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="single_post">
+                                            <div class="img-post">
+                                                <img src="<?= $banner->image_path; ?>" alt="Awesome Image">
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        <?php endif; ?>
                     </div>
                     <div class="card">
                         <div class="header">

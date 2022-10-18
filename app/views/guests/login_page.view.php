@@ -21,7 +21,12 @@
                                     <h4 class="mt-1 mb-5 pb-1">Laboratório de Sistemas Web</h4>
                                 </div>
 
-                                <?= $_SESSION["errors"]["loginInvalido"] ?? "" ?>
+                                <?php if(isset($_SESSION['errors']['loginInvalido']) && !empty($_SESSION['errors']['loginInvalido'])): ?>
+                                    <div class="alert alert-warning" role="alert">
+                                        <?= $_SESSION["errors"]["loginInvalido"] ?? "" ?>
+                                    </div>
+                                <?php endif; ?>
+                                
                                 <form action="/login" method="post">
                                     <p>Logue na sua conta</p>
 
@@ -41,7 +46,7 @@
                                     <div class="text-center pt-1 mb-5 pb-1">
                                         <button class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" type="submit">
                                             Login</button>
-                                        <a class="text-muted" href="#!">Esquceu a senha?</a>
+                                        <a class="text-muted" href="#!">Esqueceu a senha?</a>
                                     </div>
 
                                     <div class="d-flex align-items-center justify-content-center pb-4">

@@ -37,4 +37,4 @@ if(count($argv) >= 3) {
 echo "Cascata:
         Github: https://github.com/Jo1oPedro,
         LinkedIn:  https://www.linkedin.com/in/jo%C3%A3o-pedro-ferreira-pedreira-b6228619b/,
-        Code Voa & love u Daniboy.";
+        Code Voa";

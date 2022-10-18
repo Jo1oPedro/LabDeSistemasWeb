@@ -7,7 +7,6 @@ if(count($argv) == 3 || count($argv) == 4) {
     $migration_path = __DIR__."\..\database\migrations\\" . str_replace(".", "", microtime(true)) . "_" . $migration_name . "_table.php";
     if(!file_exists($migration_path) || !is_file($migration_path)) {
         $file = __DIR__."\..\database\default_migration\DefaultMigration.php";
-        // echo $file;
         $default_migration = file_get_contents($file);
         $customized_migration = str_replace(
             [
@@ -52,4 +51,4 @@ if(count($argv) == 3 || count($argv) == 4) {
 echo "Cascata:
         Github: https://github.com/Jo1oPedro,
         LinkedIn:  https://www.linkedin.com/in/jo%C3%A3o-pedro-ferreira-pedreira-b6228619b/,
-        Code Voa & love u Daniboy.";
+        Code Voa";

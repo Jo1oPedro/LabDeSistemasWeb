@@ -3,7 +3,7 @@
 try {
     if(count($argv) > 1) {
         match ($argv[1]) {
-            "bootstrap\down_all_migrations" => include_once (__DIR__."bootstrap\down_all_migrations"),
+            "down_all_migrations" => include_once (__DIR__."\bootstrap\down_all_migrations"),
             "run_migrations" => include_once (__DIR__."\bootstrap\\run_all_migrations"),
             /*"make" =>
                 (!isset($argv[2])) ? throw new Exception("Comando Invalido") :

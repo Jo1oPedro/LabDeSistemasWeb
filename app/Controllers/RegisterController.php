@@ -10,13 +10,18 @@ class RegisterController extends Controller
     public function __construct()
     {
         parent::__construct();
+        if(isset($_SESSION["errors"])) {
+            foreach($_SESSION["errors"] as $key => $erro) {
+                unset($_SESSION["errors"][$key]);
+            }
+        }
     }
-
+    
     public function registerForm()
     {
         return view('guests/register_page');
     }
-
+    
     public function registerAction()
     {
         $filterForm = [
@@ -29,22 +34,31 @@ class RegisterController extends Controller
         $userData = filter_input_array(INPUT_POST, $filterForm);
         if(in_array(false, $userData)) {
             $errors = array_keys($userData, false, false);
-            $_SESSION["error"] = [];
+            $_SESSION["errors"] = [];
             foreach($errors as $error) {
-                $_SESSION["error"][$error] = "Erro ao cadastrar o usuario";
+                if($error == "name") {
+                    $_SESSION["errors"][$error] = "Campo nome é obrigatório";
+                } else if($error == "email") {
+                    $_SESSION["errors"][$error] = "Campo email é obrigatório";
+                } else if($error == "password") {
+                    $_SESSION["errors"][$error] = "Campo senha é obrigatório";
+                } else if($error == "birthdate") {
+                    $_SESSION["errors"][$error] = "Campo data de aniversário é obrigatório";
+                } else if($error == "gender") {
+                    $_SESSION["errors"][$error] = "Campo genero é obrigatório";
+                }
             }
             return view('guests/register_page');
         }
         try {
             $userData["password"] = password_hash($userData["password"], PASSWORD_BCRYPT);
             $user = User::create($userData);
-        } catch(QueryException $PDOException) {
-            $_SESSION["error"] = ["email" => "Email já foi cadastrado"];
+        } catch(QueryException $exception) {
+            $_SESSION["errors"] = ["email" => "Email já foi cadastrado"];
             return view('guests/register_page');
         }
-        unset($_SESSION["error"]);
+        unset($_SESSION["errors"]);
         $_SESSION["logado"] = $user->getAttributes();
-        var_dump($_SESSION);
         return redirect("home");
     }
 
